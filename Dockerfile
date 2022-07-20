@@ -20,4 +20,6 @@ RUN cargo build --release --bin server
 FROM gcr.io/distroless/cc-debian11
 COPY --from=cache /app/target/release/server /app/server
 WORKDIR /app
+# enable logging for the server
+ENV RUST_LOG=server
 CMD ["./server"]
